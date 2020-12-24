@@ -15,6 +15,10 @@ class App extends React.Component {
                     <Layout.Navbar />
                     <Layout.Main>
                         <Route path="/" exact component={Pages.Home} />
+                        <Route path="/layout" exact component={Pages.Layout} />
+                        <Route path="/utilities" exact component={Pages.Utilities} />
+                        <Route path="/tree" component={Pages.Tree} />
+                        <Route path="/sandbox" component={Pages.Sandbox} />
                         <Route path="/contact" component={Pages.Contact} />
                     </Layout.Main>
                     <Layout.Footer />
