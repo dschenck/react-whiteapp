@@ -28,7 +28,7 @@ class Navbar extends React.Component{
                             </svg>
                         </button>
                     </div>
-                    <div class="w-full flex-grow lg:flex lg:content-center lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 z-20">
+                    <div class="w-full flex-grow lg:content-center lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 z-20">
                         <div class="flex-1 w-full mx-auto max-w-sm content-center py-4 lg:py-0">
                             <div class="relative pull-right pl-4 pr-4 md:pr-0">
                                 <input type="search" placeholder="Search" class="w-full bg-gray-100 text-sm text-gray-800 transition border focus:outline-none focus:border-purple rounded py-1 px-2 pl-10 appearance-none leading-normal"/>
