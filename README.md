@@ -1,6 +1,8 @@
 # Application template
 
-> A blank react application with tailwindcss
+> A simple react application with a nested drag-and-drop component, designed with tailwindcss
+
+Demo [here](https://dschenck.github.io/react-quickstart/#tree)
 
 ## Instructions
 1. Clone the repository locally
