@@ -16,7 +16,7 @@ const operators = [
 
 const project = [{
     type:"operator",
-    name:"Operation R",
+    name:"Operator R",
     children:[]
 },{
     type:"operator",

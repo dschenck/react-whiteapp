@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html { 
+    font-family: 'Lato', sans-serif; 
+}
 
 .box {
     @apply bg-white p-2 border border-gray-200 mb-2;
