@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "clipboard": "^2.0.6",
+    "flux": "^4.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dragula": "^1.1.17",

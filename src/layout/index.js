@@ -1,6 +1,6 @@
-import Main   from './Main'
-import Footer from './Footer'
-import Navbar from './Navbar'
+import Main   from './main'
+import Footer from './footer'
+import Navbar from './navbar'
 
 export { 
     Footer, 

@@ -1,5 +1,9 @@
-import React from 'react'
+import React                from 'react'
 import { withRouter, Link } from 'react-router-dom'
+import Session              from '../contexts/session'
+import utils                from '../utilities'
+import actions              from '../flux/actions'
+import Dropdown             from '../components/dropdowns' 
 
 const Logo = () => {
     return(
@@ -9,28 +13,30 @@ const Logo = () => {
     )
 }
 
-class Navbar extends React.Component{
-    render(){
-        return(
-            <nav class="w-full bg-white border-b border-gray-400 mb-5 px-4">
-                <div class="w-full container mx-auto flex flex-wrap items-center justify-between py-4">
-                    <div class="flex items-center">
-                        <Logo />
-                        <a class="font-bold text-xl"  href="#"> 
-                            Inbox
-                        </a>
-                    </div>
-                    <div class="block lg:hidden">
-                        <button class="flex items-center px-3 py-2 border border-gray-500 rounded text-gray-500 hover:text-black appearance-none focus:outline-none">
-                            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
-                                <title>Menu</title>
-                                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="w-full flex-grow lg:content-center lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 z-20">
-                        <ul class="lg:flex justify-end items-center">
-                            <li class="mr-3 py-2 lg:py-0">
+const Navbar = () => {
+    const session = React.useContext(Session.context)
+
+    return(
+        <nav class="w-full bg-white border-b border-gray-400 px-4">
+            <div class="w-full container mx-auto flex flex-wrap items-center justify-between py-2">
+                <div class="flex items-center">
+                    <Logo />
+                    <a class="font-bold text-xl"  href="#"> 
+                        Inbox
+                    </a>
+                </div>
+                <div class="block lg:hidden">
+                    <button class="flex items-center px-3 py-2 border border-gray-500 rounded text-gray-500 hover:text-black appearance-none focus:outline-none">
+                        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
+                            <title>Menu</title>
+                            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="w-full flex-grow lg:content-center lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 z-20">
+                    <ul class="lg:flex justify-end items-center">
+                        <utils.If test={session}>
+                            <li class="py-2 lg:py-0">
                                 <Link class="inline-block text-gray-600 no-underline hover:text-black hover:underline py-2 pl-4" to="/layout">Layout</Link>
                             </li>
                             <li class="py-2 lg:py-0">
@@ -39,12 +45,40 @@ class Navbar extends React.Component{
                             <li class="py-2 lg:py-0">
                                 <Link class="inline-block text-gray-600 no-underline hover:text-black hover:underline py-2 pl-4" to="/tree">Tree</Link>
                             </li>
-                        </ul>
-                    </div>
+                            <li class="py-2 lg:py-0">
+                                <Dropdown.Dropdown>
+                                    <button class="text-gray-600 no-underline hover:text-black hover:underline py-2 pl-4 focus:outline-none">
+                                        {session && session.user.firstname} <i class="ml-1 text-sm fa fa-caret-down"></i>
+                                    </button>
+                                    <div class="w-36 shadow-lg bg-white border border-gray-200">
+                                        <Dropdown.Link to="/test" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                                            Test
+                                        </Dropdown.Link>
+                                        <button class="inline-block text-gray-600 no-underline hover:text-black hover:underline py-2 pl-4"
+                                            onClick={actions.authentication.logout}>
+                                            logout
+                                        </button>
+                                    </div>
+                                </Dropdown.Dropdown>
+                            </li>
+                        </utils.If>
+                        <utils.If test={!session}>
+                            <li class="py-2 lg:py-0">
+                                <Link class="inline-block text-gray-600 no-underline hover:text-black hover:underline py-2 pl-4" to="/register">
+                                    register
+                                </Link>
+                            </li>
+                            <li class="py-2 lg:py-0">
+                                <Link class="inline-block text-gray-600 no-underline hover:text-black hover:underline py-2 pl-4" to="/login">
+                                    login
+                                </Link>
+                            </li>
+                        </utils.If>
+                    </ul>
                 </div>
-            </nav>
-        )
-    }
+            </div>
+        </nav>
+    )
 }
 
 export default withRouter(Navbar)
