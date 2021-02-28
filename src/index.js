@@ -5,14 +5,18 @@ import { HashRouter as Router, Link, Route} from 'react-router-dom'
 
 import './index.css'
 
-import * as Layout from './Layout'
-import * as Pages  from './pages'
-import Session     from './contexts/session'
+import * as Layout   from './Layout'
+import * as Pages    from './pages'
+import modules       from './modules'
+import Session       from './contexts/session'
 
 class App extends React.Component {
     render(){
         return(
             <Session.Component>
+                <modules.notifications.Component />
+                <modules.prompts.Component />
+                <Layout.Panel />
                 <Router>
                     <Layout.Navbar />
                     <Layout.Main>
@@ -25,7 +29,7 @@ class App extends React.Component {
                         <AuthRoute path="/layout" exact component={Pages.Layout} />
                         <AuthRoute path="/utilities" exact component={Pages.Utilities} />
                         <AuthRoute path="/tree" component={Pages.Tree} />
-                        <AuthRoute path="/sandbox" component={Pages.Sandbox} />
+                        <Route path="/sandbox" component={Pages.Sandbox} />
                         <AuthRoute path="/contact" component={Pages.Contact} />
                     </Layout.Main>
                     <Layout.Footer />

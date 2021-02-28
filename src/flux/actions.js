@@ -1,4 +1,5 @@
 import dispatcher from './dispatcher'
+import modules    from '../modules'
 import apis       from '../apis'
 
 const authentication = {
@@ -52,6 +53,34 @@ const authentication = {
     }
 }
 
+const clipboard = {
+    copy: node => {
+        const range = document.createRange();
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        
+        try {
+            range.selectNodeContents(node);
+            selection.addRange(range);
+        } 
+        catch (e) {
+            range.selectNode(node);
+            selection.addRange(range);
+        }
+        document.execCommand('Copy');
+        selection.removeAllRanges()
+        
+        modules.notifications.actions.notify({
+            type:"success", 
+            message:"Table copied to clipboard"
+        })
+    }
+}
+
+
 export default { 
-    authentication
+    authentication, 
+    clipboard,
+    notifications:modules.notifications.actions, 
+    prompts:modules.prompts.actions
 }
