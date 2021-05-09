@@ -60,6 +60,7 @@ class Link extends React.Component{
 }
 
 export default { 
+    Context,
     Dropdown, 
     Link
 }
