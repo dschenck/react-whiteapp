@@ -14,6 +14,7 @@
     "clipboard": "^2.0.6",
     "flux": "^4.0.1",
     "react": "^16.13.1",
+    "react-datepicker": "^3.6.0",
     "react-dom": "^16.13.1",
     "react-dragula": "^1.1.17",
     "react-router-dom": "^5.2.0"
@@ -22,6 +23,7 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "@babel/runtime": "^7.13.8",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "babel-plugin-react-html-attrs": "^2.1.0",
